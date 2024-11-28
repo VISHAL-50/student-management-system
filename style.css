@@ -1,0 +1,697 @@
+:root {
+  --main-color: #8e44ad;
+  /* --main-color: #ff9933; */
+  --red: #e74c3c;
+  --orange: #f39c12;
+  --white: #fff;
+  --black: #2c3e50;
+  --light-color: #888;
+  --light-bg: #eee;
+  --border: 0.1rem solid rgba(0, 0, 0, 0.2);
+}
+
+* {
+  font-family: "Bitter", serif;
+  font-family: "Questrial", sans-serif;
+  font-family: "Scope One", serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+
+*::selection {
+  background-color: var(--main-color);
+  color: #fff;
+}
+
+*::-webkit-scrollbar {
+  height: 0.5rem;
+  width: 1rem;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--main-color);
+}
+
+html {
+  font-size: 61.5%;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--light-bg);
+  /* padding-left: 30rem; */
+  transition: 0.2s linear;
+  /* background-color: red; */
+}
+
+body.dark {
+  --white: #222;
+  --black: #fff;
+  --light-color: #aaa;
+  --light-bg: #333;
+  --border: 0.1rem solid rgba(255, 255, 255, 0.2);
+}
+
+body.active {
+  padding-left: 0;
+}
+
+section {
+  padding: 2rem;
+
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.btn,
+.option-btn,
+.delete-btn,
+.inline-btn,
+.inline-option-btn,
+.inline-delete-btn {
+  border-radius: 0.5rem;
+  padding: 1rem 3rem;
+  font-size: 1.8rem;
+  color: #fff;
+  margin-top: 1rem;
+  text-transform: capitalize;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn,
+.option-btn,
+.delete-btn {
+  display: block;
+  width: 100%;
+}
+
+.inline-btn,
+.inline-option-btn,
+.inline-delete-btn {
+  display: inline-block;
+}
+
+.btn,
+.inline-btn {
+  background-color: var(--main-color);
+}
+
+.option-btn,
+.inline-option-btn {
+  background-color: var(--orange);
+}
+
+.delete-btn,
+.inline-delete-btn {
+  background-color: var(--red);
+}
+
+.btn:hover,
+.option-btn:hover,
+.delete-btn:hover,
+.inline-btn:hover,
+.inline-option-btn:hover,
+.inline-delete-btn:hover {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.flex-btn {
+  display: flex;
+  gap: 1rem;
+}
+
+.heading {
+  padding-bottom: 1.8rem;
+  border-bottom: var(--border);
+  font-size: 2.5rem;
+  color: var(--black);
+  text-transform: capitalize;
+  margin-bottom: 2rem;
+}
+
+.header {
+  background-color: var(--white);
+  border-bottom: var(--border);
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.header .flex {
+  padding: 1.5rem 2rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header .flex .logo {
+  font-size: 2.5rem;
+  color: var(--black);
+  font-weight: bolder;
+}
+
+.header .flex .search-form {
+  width: 50rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  background-color: var(--light-bg);
+}
+
+.header .flex .search-form input {
+  width: 100%;
+  background: none;
+  font-size: 1.8rem;
+  color: var(--black);
+}
+
+.header .flex .search-form button {
+  font-size: 2rem;
+  color: var(--black);
+  cursor: pointer;
+  background: none;
+}
+
+.header .flex .search-form button:hover {
+  color: var(--main-color);
+}
+
+.header .flex .icons div {
+  font-size: 2rem;
+  color: var(--black);
+  border-radius: 0.5rem;
+  height: 4.5rem;
+  cursor: pointer;
+  width: 4.5rem;
+  line-height: 4.4rem;
+  background-color: var(--light-bg);
+  text-align: center;
+  margin-left: 0.5rem;
+}
+
+.header .flex .icons div:hover {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+#search-btn {
+  display: none;
+}
+
+.side-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30rem;
+  height: 100vh;
+  background-color: var(--white);
+  border-right: var(--border);
+  transition: 0.2s linear;
+  z-index: 1200;
+}
+
+.side-bar .close-side-bar {
+  text-align: right;
+  padding: 2rem;
+  padding-bottom: 0;
+  display: none;
+}
+
+.side-bar .close-side-bar i {
+  height: 4.5rem;
+  width: 4.5rem;
+  line-height: 4.4rem;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  background-color: var(--red);
+  text-align: center;
+  border-radius: 0.5rem;
+}
+
+.side-bar .close-side-bar i:hover {
+  background-color: var(--black);
+}
+
+.side-bar .profile {
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.side-bar .profile img {
+  height: 10rem;
+  width: 10rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 5rem;
+}
+
+.side-bar .profile h3 {
+  font-size: 2rem;
+  color: var(--black);
+}
+
+.side-bar .profile span {
+  color: var(--light-bg);
+  font-size: 1.65rem;
+}
+
+.side-bar .navbar a {
+  display: block;
+  padding: 2rem;
+  margin: 0.5rem 0;
+  font-size: 1.8rem;
+}
+
+.side-bar .navbar a i {
+  color: var(--main-color);
+  margin-right: 1.5rem;
+  transition: 0.2s linear;
+}
+
+.side-bar .navbar a span {
+  color: var(--light-color);
+}
+
+.side-bar .navbar a:hover {
+  background-color: var(--light-bg);
+}
+
+.side-bar .navbar a:hover i {
+  margin-right: 2.5rem;
+}
+
+.side-bar.active {
+  left: -31rem;
+}
+
+.table-container {
+  /* max-width: 900px; */
+  margin: 20px auto;
+  padding: 10px;
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--main-color);
+  font-size: 2rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: var(--main-color);
+  color: var(--white);
+}
+
+thead th {
+  padding: 12px;
+  text-align: left;
+  font-size: 1.6rem;
+}
+
+tbody tr {
+  border-bottom: var(--border);
+  color: var(--black);
+}
+
+tbody tr:hover {
+  background-color: var(--light-bg);
+}
+
+tbody td {
+  padding: 12px;
+  text-align: left;
+  font-size: 1.5rem;
+}
+
+td img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+td button {
+  margin: 2px;
+}
+
+.table-btn {
+  border: none;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  color: var(--white);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn {
+  background-color: var(--main-color);
+}
+
+.option-btn {
+  background-color: var(--orange);
+}
+
+.delete-btn {
+  background-color: var(--red);
+}
+
+.btn:hover,
+.option-btn:hover,
+.delete-btn:hover {
+  background-color: var(--black);
+}
+
+@media (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tbody {
+    display: block;
+  }
+
+  tbody tr {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+  }
+
+  tbody td img {
+    margin-right: auto;
+  }
+
+  tbody td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: var(--main-color);
+    flex: 1;
+  }
+
+  tbody td:nth-child(1)::before {
+    content: "Image";
+  }
+  tbody td:nth-child(2)::before {
+    content: "Name";
+  }
+  tbody td:nth-child(3)::before {
+    content: "Email";
+  }
+  tbody td:nth-child(4)::before {
+    content: "Creation Date";
+  }
+  tbody td:nth-child(5)::before {
+    content: "Class Name";
+  }
+  tbody td:nth-child(6)::before {
+    content: "Actions";
+  }
+
+  td button {
+    margin-top: 4px;
+    width: 100%;
+  }
+}
+
+.profile .details {
+  background-color: var(--white);
+  border-radius: 0.5rem;
+  padding: 2rem;
+}
+
+.profile .details .user {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.profile .details .user img {
+  height: 10rem;
+  width: 10rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+}
+
+.profile .details .user h3 {
+  font-size: 2rem;
+  margin: 0.5rem 0;
+  color: var(--black);
+}
+
+.profile .details .user p {
+  font-size: 1.5rem;
+  color: var(--light-color);
+}
+
+.profile .details .box-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.profile .details .box-container .box {
+  background-color: var(--light-bg);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  flex: 1 1 30rem;
+}
+
+.profile .details .box-container .box .flex {
+  display: flex;
+  align-items: center;
+  gap: 1.7rem;
+  margin-bottom: 1rem;
+}
+
+.profile .details .box-container .box .flex i {
+  height: 4.5rem;
+  width: 4.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--black);
+  line-height: 4.4rem;
+  font-size: 2rem;
+  color: var(--white);
+  text-align: center;
+}
+
+.profile .details .box-container .box .flex h3 {
+  font-size: 1.4rem;
+  color: var(--main-color);
+  margin-bottom: 0.2rem;
+}
+
+.profile .details .box-container .box .flex span {
+  font-size: 1.5rem;
+  color: var(--light-color);
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 14rem);
+}
+
+.form-container form {
+  background-color: var(--white);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  width: 50rem;
+}
+
+.form-container form h3 {
+  text-align: center;
+  color: var(--black);
+  font-size: 2.56rem;
+  margin-bottom: 1rem;
+}
+
+.form-container form p {
+  padding-top: 1rem;
+  font-size: 1.7rem;
+  color: var(--light-color);
+}
+
+.form-container form p span {
+  color: var(--red);
+}
+
+.form-container form .box {
+  width: 100%;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  font-size: 1.8rem;
+  color: var(--black);
+  padding: 1.4rem;
+  background-color: var(--light-bg);
+}
+
+/* Ensure the dropdown matches the input fields */
+select.box {
+  appearance: none; /* Removes default browser styling for dropdown */
+  -webkit-appearance: none; /* For Safari */
+  -moz-appearance: none; /* For Firefox */
+  background: var(--light-bg)
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24"><path fill="%23777777" d="M7 10l5 5 5-5z"></path></svg>')
+    no-repeat right 1rem center;
+  background-size: 1.2rem;
+}
+
+select.box:focus {
+  outline: none;
+  box-shadow: 0 0 0.2rem var(--main-color);
+}
+.create-class .create-class-form .create-form {
+  /* width: 50rem; */
+  float: right;
+  /* position: absolute; */
+  border-radius: 0.5rem;
+  /* right: 0; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-bg);
+  text-align: center;
+}
+
+.create-class .create-class-form .create-form .form-row > input {
+  width: 100%;
+  background: none;
+  font-size: 1.8rem;
+  color: var(--black);
+  padding: 0.5rem;
+  border: 1px solid var(--black);
+  border-radius: 0.3rem;
+}
+
+.create-class .create-class-form .create-form .form-row > .btn.create-btn {
+  font-size: 1.8rem;
+  width: 10rem;
+  color: var(--white);
+  background-color: var(--main-color);
+  cursor: pointer;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 0.3rem;
+}
+
+.create-class
+  .create-class-form
+  .create-form
+  .form-row
+  > .btn.create-btn:hover {
+  background-color: var(--main-color);
+}
+
+/* media query 
+ */
+@media (max-width: 1200px) {
+  body {
+    padding-left: 0;
+  }
+
+  .side-bar .close-side-bar {
+    display: block;
+  }
+
+  .side-bar {
+    transition: 0.2s linear;
+    left: -30rem;
+  }
+
+  .side-bar.active {
+    left: 0;
+    box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.7);
+  }
+}
+
+@media (max-width: 768px) {
+  #search-btn {
+    display: inline-block;
+  }
+
+  .header .flex .search-form {
+    position: absolute;
+    top: 99%;
+    left: 0;
+    right: 0;
+    width: auto;
+    border-top: var(--border);
+    border-bottom: var(--border);
+    background-color: var(--white);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: 0.2s linear;
+  }
+
+  .header .flex .search-form.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 55%;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  .flex-btn {
+    flex-flow: column;
+    gap: 0;
+  }
+
+  .about .row .image img {
+    /* width: 100%; */
+    height: auto;
+  }
+
+  .playlist .row .col .thumb {
+    height: 20rem;
+  }
+
+  .contact .row .image img {
+    height: auto;
+  }
+}
